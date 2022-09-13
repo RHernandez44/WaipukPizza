@@ -1,18 +1,21 @@
 <?php
 
-//this line is for debugging purposes so that we can see the actual POST data
+include "header.php";
+include "checksession.php";
+include "menu.php";
 
+//this line is for debugging purposes so that we can see the actual POST data
 echo "<pre>";
+echo "POST DATA\n";
 var_dump($_POST);
 echo "</pre>";
-
-
 
 include "checksession.php";
 
 loginStatus(); //show the current login status
 
 echo "<pre>";
+echo "Session variables\n";
 var_dump($_SESSION);
 echo "</pre>";
 
@@ -100,35 +103,32 @@ if (isset($_POST['login']) and !empty($_POST['login']) and ($_POST['login'] == '
 }
 
 ?>
-
-<h1>Login</h1>
-
-<form method="POST" action="login.php">
-
-    <p>
-
-        <label for="username">Username: </label>
-
-        <input type="text" id="username" name="username" maxlength="32">
-
-    </p>
-
-    <p>
-
-        <label for="password">Password: </label>
-
-        <input type="password" id="password" name="password" maxlength="32">
-
-    </p>
-
-
-
-    <input type="submit" name="login" value="Login">
-
-    <input type="submit" name="logout" value="Logout">
-
-</form>
+<!-- ------------------------- HTML starts here ------------------------- -->
+<div id="body" class="contact">
+    <div class="footer">
+        <div class="contact">
+            <h1>Login</h1>
+            <form method="POST" action="login.php">
+                <p>
+                    <label for="username">Username: </label>
+                    <input type="text" id="username" name="username" maxlength="32">
+                </p>
+                <p>
+                    <label for="password">Password: </label>
+                    <input type="password" id="password" name="password" maxlength="32">
+                </p>
+                <input type="submit" name="login" value="Login" id="submit">
+                <br>
+                <input type="submit" name="logout" value="Logout" id="submit">
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 
 </html>
+<?php
+//----------- page content ends here
+include "footer.php";
+?>
