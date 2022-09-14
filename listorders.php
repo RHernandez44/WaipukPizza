@@ -15,7 +15,8 @@ if (mysqli_connect_errno()) {
 }
 
 //prepare a query and send it to the server
-$query = 'SELECT itemID,pizza,pizzatype FROM fooditems ORDER BY itemID';
+$query = 'SELECT orderID,orderDate,orderTime,customerID FROM orders ORDER BY orderDate';
+
 $result = mysqli_query($DBC, $query);
 $rowcount = mysqli_num_rows($result);
 ?>
@@ -24,8 +25,10 @@ $rowcount = mysqli_num_rows($result);
 <table border="1">
     <thead>
         <tr>
-            <th>Food Item Name</th>
-            <th>Type</th>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Customer ID</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -34,10 +37,12 @@ $rowcount = mysqli_num_rows($result);
     //makes sure we have food items
     if ($rowcount > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            $id = $row['itemID'];
-            $pt = $row['pizzatype'] == 'S' ? 'Standard' : 'Vegeterian';
-            echo '<tr><td>' . $row['pizza'] . '</td><td>' . $pt . '</td>';
-            echo     '<td><a href="viewitem.php?id=' . $id . '">[view]</a>';
+            $id = $row['orderID'];
+            $oDate = $row['orderDate'];
+            $otime = $row['orderTime'];
+            $custID = $row['customerID'];
+            echo '<tr><td>' . $id . '</td><td>' . $oDate . '</td><td>' . $otime . '</td><td>' . $custID . '</td>';
+            echo     '<td><a href="vieworder.php?id=' . $id . '">[view]</a>';
             echo         '<a href="edititem.php?id=' . $id . '">[edit]</a>';
             echo         '<a href="deleteitem.php?id=' . $id . '">[delete]</a></td>';
             echo '</tr>' . PHP_EOL;

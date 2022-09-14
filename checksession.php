@@ -33,7 +33,7 @@ function loginStatus()
 {
     $un = $_SESSION['username'];
     if ($_SESSION['loggedin'] == 1)
-        echo "<h1>Logged in as $un</h1>";
+        echo "<h2>Logged in as $un</h2>";
     else
         if ($un != '') {
         echo "<h1>Logged out</h1>";
