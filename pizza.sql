@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS fooditems (
   itemID int unsigned NOT NULL auto_increment,
   pizza varchar(15) NOT NULL, -- name of pizza
   description text default NULL, -- description of the ingredients
-  pizzatype character default `S`, -- S - standard, V - vegetarian 
+  pizzatype character default "S", -- S - standard, V - vegetarian 
   price float NOT NULL, -- what does the pizza cost
   PRIMARY KEY (itemID)
 ) AUTO_INCREMENT=1;
@@ -62,16 +62,16 @@ CREATE TABLE IF NOT EXISTS orderlines (
     PRIMARY KEY (orderLineID)
 )AUTO_INCREMENT=1;
 
-INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`,) VALUES ("65", "1","4");
-INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`,) VALUES ("46", "9", "24");
-INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`,) VALUES ("43", "2", "90");
-INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`,) VALUES ("17", "1", "79");
-INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`,) VALUES ("42", "9", "3";
-INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`,) VALUES ("13", "6", "8";
-INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`,) VALUES ("50", "7", "49");
-INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`,) VALUES ("81", "7", "37");
-INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`,) VALUES ("33", "8", "64");
-INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`,) VALUES ("41", "2", "63");
+INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`) VALUES ("65", "1","4");
+INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`) VALUES ("46", "9", "24");
+INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`) VALUES ("43", "2", "90");
+INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`) VALUES ("17", "1", "79");
+INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`) VALUES ("42", "9", "3");
+INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`) VALUES ("13", "6", "8");
+INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`) VALUES ("50", "7", "49");
+INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`) VALUES ("81", "7", "37");
+INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`) VALUES ("33", "8", "64");
+INSERT INTO `orderlines` (`orderLineID`, `itemID`, `orderID`) VALUES ("41", "2", "63");
 
 
 -- Bookings for the resturaunt
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS customer (
   firstname varchar(50) NOT NULL,
   lastname varchar(50) NOT NULL,
   email varchar(100) NOT NULL,  
-  password varchar(40) NOT NULL default `.`,
+  password varchar(40) NOT NULL default ".",
   PRIMARY KEY (customerID)
 ) AUTO_INCREMENT=1;
 

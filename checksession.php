@@ -31,6 +31,7 @@ function checkUser()
 //just to show we are are logged in
 function loginStatus()
 {
+    $un = '';
     $un = $_SESSION['username'];
     if ($_SESSION['loggedin'] == 1)
         echo "<h2>Logged in as $un</h2>";

@@ -50,7 +50,7 @@ $rowcount = mysqli_num_rows($result);
             $custID = $row['customerID'];
             echo '<tr><td>' . $id . '</td><td>' . $oDate . '</td><td>' . $otime . '</td><td>' . $custID . '</td>';
             echo     '<td><a href="vieworder.php?id=' . $id . '">[view]</a>';
-            echo         '<a href="edititem.php?id=' . $id . '">[edit]</a>';
+            echo         '<a href="editorder.php?id=' . $id . '">[edit]</a>';
             echo         '<a href="deleteorder.php?id=' . $id . '">[delete]</a></td>';
             echo '</tr>' . PHP_EOL;
         }

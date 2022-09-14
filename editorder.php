@@ -1,9 +1,36 @@
 <!DOCTYPE HTML>
 <html>
+<?php
+include "header.php";
+include "menu.php";
+include "checksession.php";
+?>
+<div id="body">
+    <div class="header">
+        <div>
+            <h1>Edit Order</h1>
+        </div>
+    </div>
+</div>
 
-<head>
-    <title>Edit Order</title>
-</head>
+<?php
+// Shows session variables
+echo "<pre>";
+echo "Session variables\n";
+var_dump($_SESSION);
+echo "</pre>";
+
+// this line is for debugging purposes so that we can see the actual POST data
+echo "<pre>";
+echo "POST DATA\n";
+var_dump($_POST);
+echo "</pre>";
+
+echo "<pre>";
+echo "GET DATA\n";
+var_dump($_GET);
+echo "</pre>";
+?>
 
 <body>
 
@@ -22,45 +49,44 @@
         return htmlspecialchars(stripslashes(trim($data)));
     }
 
-    //retrieve the itemid from the URL
+    //retrieve the orderid from the URL
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        $id = $_GET['id'];
-        if (empty($id) or !is_numeric($id)) {
+        $orderid = $_GET['id'];
+        if (empty($orderid) or !is_numeric($orderid)) {
             echo "<h2>Invalid food item ID</h2>"; //simple error feedback
             exit;
         }
     }
-    //the data was sent using a formtherefore we use the $_POST instead of $_GET
+    //the data was sent using a form therefore we use the $_POST instead of $_GET
     //check if we are saving data first by checking if the submit button exists in the array
     if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Update')) {
         //validate incoming data - only the first field is done for you in this example - rest is up to you do
-
+        $error = 0;
+        $msg = "";
         //refer to additems for extend validation examples
         //itemID (sent via a form it is a string not a number so we try a type conversion!)    
         if (isset($_POST['id']) and !empty($_POST['id']) and is_integer(intval($_POST['id']))) {
-            $id = cleanInput($_POST['id']);
+            $orderid = cleanInput($_POST['id']);
         } else {
             $error++; //bump the error flag
             $msg .= 'Invalid food item ID '; //append error message
-            $id = 0;
+            $orderid = 0;
         }
-        //pizza
-        $pizza = cleanInput($_POST['pizza']);
-        //description
-        $description = cleanInput($_POST['description']);
-        //pizzatype
-        $pizzatype = cleanInput($_POST['pizzatype']);
-        //price
-        $price = cleanInput($_POST['price']);
+        //Date
+        $orderDate = cleanInput($_POST['orderDate']);
+        //orderTime
+        $orderTime = cleanInput($_POST['orderTime']);
+        //extras
+        $extras = cleanInput($_POST['extras']);
 
         //save the item data if the error flag is still clear and item id is > 0
-        if ($error == 0 and $id > 0) {
-            $query = "UPDATE fooditems SET pizza=?,description=?,pizzatype=?,price=? WHERE itemID=?";
+        if ($error == 0 and $orderid > 0) {
+            $query = "UPDATE orders SET orderDate=?,orderTime=?,extras=? WHERE orderID=?";
             $stmt = mysqli_prepare($DBC, $query); //prepare the query
-            mysqli_stmt_bind_param($stmt, 'ssssi', $pizza, $description, $pizzatype, $price, $id);
+            mysqli_stmt_bind_param($stmt, 'sssi', $orderDate, $orderTime, $extras, $orderid);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
-            echo "<h2>Food item details updated.</h2>";
+            echo "<h2>Order details updated.</h2>";
             //        header('Location: http://localhost/bit608/listitems.php', true, 303);      
         } else {
             echo "<h2>$msg</h2>" . PHP_EOL;
@@ -68,37 +94,32 @@
     }
     //locate the food item to edit by using the itemID
     //we also include the item ID in our form for sending it back for saving the data
-    $query = 'SELECT itemID,pizza,description,pizzatype,price FROM items WHERE itemid=' . $id;
+    $query = 'SELECT customerID,orderDate,orderTime,extras FROM orders WHERE orderID=' . $orderid;
     $result = mysqli_query($DBC, $query);
     $rowcount = mysqli_num_rows($result);
     if ($rowcount > 0) {
         $row = mysqli_fetch_assoc($result);
 
     ?>
-        <h1>Food item Details Update</h1>
-        <h2><a href='listitems.php'>[Return to the food item listing]</a><a href='/pizza/'>[Return to the main page]</a></h2>
+        <h1>INQUIRY FORM FOR ORDER# <?php echo $orderid; ?></h1>
 
-        <form method="POST" action="edititem.php">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
+        <form method="POST" action="editorder.php">
+            <input type="hidden" name="id" value="<?php echo $orderid; ?>">
+            <input type="hidden" name="customerID" value="<?php echo $row['customerID']; ?>">
             <p>
-                <label for="pizza">Pizza name: </label>
-                <input type="text" id="pizza" name="pizza" minlength="5" maxlength="50" value="<?php echo $row['pizza']; ?>" required>
+                <label for="orderDate">Order Date:</label>
+                <input type="date" id="orderDate" name="orderDate" minlength="5" maxlength="50" value="<?php echo $row['orderDate']; ?>" required>
             </p>
             <p>
-                <label for="description">Description: </label>
-                <input type="text" id="description" name="description" size="100" minlength="5" maxlength="200" value="<?php echo $row['description']; ?>" required>
+                <label for="orderTime">Order Time:</label>
+                <input type="time" id="orderTime" name="orderTime" minlength="5" maxlength="50" value="<?php echo $row['orderTime']; ?>" required>
             </p>
             <p>
-                <label for="pizzatype">Pizza type: </label>
-                <input type="radio" id="pizzatype" name="pizzatype" value="S" <?php echo $row['pizzatype'] == 'S' ? 'Checked' : ''; ?>> Standard
-                <input type="radio" id="pizzatype" name="pizzatype" value="V" <?php echo $row['pizzatype'] == 'V' ? 'Checked' : ''; ?>> Vegeterian
-            </p>
-            <p>
-                <label for="price">Price $(5.0 to 50.0): </label>
-                <input type="number" id="price" name="price" min="5" max="50" value="<?php echo $row['price']; ?>" step="0.10" required>
+                <label for="extras">Extras: </label>
+                <input type="text" id="extras" name="extras" size="100" minlength="5" maxlength="200" value="<?php echo $row['extras']; ?>" required>
             </p>
             <input type="submit" name="submit" value="Update">
-            <a href="listitems.php">[Cancel]</a>
+            <a href="listorders.php">[Cancel]</a>
         </form>
     <?php
     } else {
@@ -107,5 +128,8 @@
     mysqli_close($DBC); //close the connection once done
     ?>
 </body>
+<?php
+include "footer.php";
+?>
 
 </html>
