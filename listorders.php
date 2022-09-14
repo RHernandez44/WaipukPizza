@@ -20,7 +20,7 @@ $query = 'SELECT orderID,orderDate,orderTime,customerID FROM orders ORDER BY ord
 $result = mysqli_query($DBC, $query);
 $rowcount = mysqli_num_rows($result);
 ?>
-<h1>Food item list</h1>
+<h1>Orders list</h1>
 <h2><a href='additem.php'>[Add a food item]</a><a href="index.php">[Return to main page]</a></h2>
 <table border="1">
     <thead>
@@ -44,7 +44,7 @@ $rowcount = mysqli_num_rows($result);
             echo '<tr><td>' . $id . '</td><td>' . $oDate . '</td><td>' . $otime . '</td><td>' . $custID . '</td>';
             echo     '<td><a href="vieworder.php?id=' . $id . '">[view]</a>';
             echo         '<a href="edititem.php?id=' . $id . '">[edit]</a>';
-            echo         '<a href="deleteitem.php?id=' . $id . '">[delete]</a></td>';
+            echo         '<a href="deleteorder.php?id=' . $id . '">[delete]</a></td>';
             echo '</tr>' . PHP_EOL;
         }
     } else echo "<h2>No food items found!</h2>"; //suitable feedback
