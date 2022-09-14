@@ -14,22 +14,22 @@ include "checksession.php";
 </div>
 
 <?php
-// Shows session variables
-echo "<pre>";
-echo "Session variables\n";
-var_dump($_SESSION);
-echo "</pre>";
+// // Shows session variables
+// echo "<pre>";
+// echo "Session variables\n";
+// var_dump($_SESSION);
+// echo "</pre>";
 
-// this line is for debugging purposes so that we can see the actual POST data
-echo "<pre>";
-echo "POST DATA\n";
-var_dump($_POST);
-echo "</pre>";
+// // this line is for debugging purposes so that we can see the actual POST data
+// echo "<pre>";
+// echo "POST DATA\n";
+// var_dump($_POST);
+// echo "</pre>";
 
-echo "<pre>";
-echo "GET DATA\n";
-var_dump($_GET);
-echo "</pre>";
+// echo "<pre>";
+// echo "GET DATA\n";
+// var_dump($_GET);
+// echo "</pre>";
 ?>
 
 <body>
