@@ -10,7 +10,7 @@
 				<a href="">Pizzas</a>
 				<ul class="primary">
 					<li><a href="product.php">Pizza Menu</a></li>
-					<li><a href="">Place Order</a></li>
+					<li><a href="placeorder.php">Place Order</a></li>
 				</ul>
 
 			</li>
