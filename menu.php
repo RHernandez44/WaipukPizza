@@ -1,7 +1,7 @@
 <!-- menu start -->
 <div id="header">
 	<div>
-		<a href="index.html" class="logo"><img src="images/logo.png" alt=""></a>
+		<a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
 		<ul id="navigation">
 			<li class="menu selected">
 				<a href="index.php">Home</a>

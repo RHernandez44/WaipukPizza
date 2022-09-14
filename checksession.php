@@ -18,13 +18,13 @@ function isAdmin()
 //function to check if the user is logged else send to the login page 
 function checkUser()
 {
-    return true;
+    // return true;
     $_SESSION['URI'] = '';
     if ($_SESSION['loggedin'] == 1)
         return TRUE;
     else {
         $_SESSION['URI'] = 'http://localhost' . $_SERVER['REQUEST_URI']; //save current url for redirect     
-        header('Location: http://localhost/pizza/login.php', true, 303);
+        header('Location: http://localhost/As2_5029791/login.php', true, 303);
     }
 }
 
@@ -48,7 +48,7 @@ function login($id, $username)
     if ($_SESSION['loggedin'] == 0 and !empty($_SESSION['URI']))
         $uri = $_SESSION['URI'];
     else {
-        $_SESSION['URI'] =  'http://localhost/pizza/listcustomers.php';
+        $_SESSION['URI'] =  'http://localhost/As2_5029791/index.php';
         $uri = $_SESSION['URI'];
     }
 
@@ -66,5 +66,5 @@ function logout()
     $_SESSION['userid'] = -1;
     $_SESSION['username'] = '';
     $_SESSION['URI'] = '';
-    header('Location: http://localhost/pizza/login.php', true, 303);
+    header('Location: http://localhost/As2_5029791/login.php', true, 303);
 }

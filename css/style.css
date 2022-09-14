@@ -1120,6 +1120,31 @@ img {
 	width: 141px;
 }
 
+#body div.footer .contact input#submit {
+	background: none;
+	border: 2px solid #c5abb4;
+	color: #a5838e;
+	cursor: pointer;
+	display: block;
+	font-family: lato-bold-webfont;
+	font-size: 16px;
+	font-weight: normal;
+	height: 40px;
+	line-height: 36px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	text-transform: uppercase;
+	width: 141px;
+}
+
+#body div.footer .contact input#submit:hover {
+	background-color: #5F7A08;
+	border: none;
+	height: 40px;
+	width: 141px;
+}
+
 #body div.footer .section {
 	background-color: #EFEDEE;
 	float: left;

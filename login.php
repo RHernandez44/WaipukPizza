@@ -4,29 +4,29 @@ include "header.php";
 include "menu.php";
 
 //this line is for debugging purposes so that we can see the actual POST data
-echo "<pre>";
-echo "POST DATA\n";
-var_dump($_POST);
-echo "</pre>";
+// echo "<pre>";
+// echo "POST DATA\n";
+// var_dump($_POST);
+// echo "</pre>";
 
 include "checksession.php";
 
 loginStatus(); //show the current login status
 
 // Shows session variables
-echo "<pre>";
-echo "Session variables\n";
-var_dump($_SESSION);
-echo "</pre>";
+// echo "<pre>";
+// echo "Session variables\n";
+// var_dump($_SESSION);
+// echo "</pre>";
 
-
+$username = '';
 $query = "SELECT email,password FROM customer WHERE email = '$username'";
 
 //simple logout
 if (isset($_POST['logout'])) logout();
 
 if (isset($_POST['login']) and !empty($_POST['login']) and ($_POST['login'] == 'Login')) {
-    
+
     include "config.php"; //load in any variables
     $DBC = mysqli_connect("127.0.0.1", DBUSER, DBPASSWORD, DBDATABASE) or die();
     //validate incoming data - only the first field is done for you in this example - rest is up to you to do

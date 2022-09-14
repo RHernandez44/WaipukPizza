@@ -32,14 +32,13 @@ CREATE TABLE IF NOT EXISTS orders (
   orderID INT UNSIGNED NOT NULL AUTO_INCREMENT,
   orderLineID INT UNSIGNED NOT NULL,
   customerID INT NOT NULL,
-  'date' DATE NOT NULL,
-  'time' TIME NOT NULL,
+  date DATE NOT NULL,
+  time TIME NOT NULL,
   extras TEXT NULL,
   totalCost FLOAT(32) NOT NULL,
   PRIMARY KEY (orderID)
 ) AUTO_INCREMENT=1;
 
--- Hard coded data inputted for testing
 INSERT INTO 'orders' ('orderID', 'orderLineID', 'customerID', 'date', 'time', 'extras', 'totalCost')
 VALUES ('90', '2', '39', '2005-01-27', '13:57:14', 'recreational sunrise letting lloyd anchor', '47.04');
 INSERT INTO 'orders' ('orderID', 'orderLineID', 'customerID', 'date', 'time', 'extras', 'totalCost')
@@ -69,29 +68,18 @@ CREATE TABLE IF NOT EXISTS orderlines (
     itemID int unsigned NULL,
     orderID INT UNSIGNED NULL,
     PRIMARY KEY (orderLineID)
-);
+)AUTO_INCREMENT=1;
 
--- Hard coded data inputted for testing
-INSERT INTO 'orderlines' ('bookingID', 'itemID', 'orderID',)
-VALUES ('65', '11', '41');
-INSERT INTO 'orderlines' ('bookingID', 'itemID', 'orderID',)
-VALUES ('46', '9', '24');
-INSERT INTO 'orderlines' ('bookingID', 'itemID', 'orderID',)
-VALUES ('43', '2', '90');
-INSERT INTO 'orderlines' ('bookingID', 'itemID', 'orderID',)
-VALUES ('17', '1', '79');
-INSERT INTO 'orderlines' ('bookingID', 'itemID', 'orderID',)
-VALUES ('42', '9', '3');
-INSERT INTO 'orderlines' ('bookingID', 'itemID', 'orderID',)
-VALUES ('13', '6', '8');
-INSERT INTO 'orderlines' ('bookingID', 'itemID', 'orderID',)
-VALUES ('50', '7', '49');
-INSERT INTO 'orderlines' ('bookingID', 'itemID', 'orderID',)
-VALUES ('81', '7', '37');
-INSERT INTO 'orderlines' ('bookingID', 'itemID', 'orderID',)
-VALUES ('33', '8', '64');
-INSERT INTO 'orderlines' ('bookingID', 'itemID', 'orderID',)
-VALUES ('41', '2', '63');
+INSERT INTO 'orderlines' ('orderLineID', 'itemID', 'orderID',) VALUES ('65', '11', '41');
+INSERT INTO 'orderlines' ('orderLineID', 'itemID', 'orderID',) VALUES ('46', '9', '24');
+INSERT INTO 'orderlines' ('orderLineID', 'itemID', 'orderID',) VALUES ('43', '2', '90');
+INSERT INTO 'orderlines' ('orderLineID', 'itemID', 'orderID',) VALUES ('17', '1', '79');
+INSERT INTO 'orderlines' ('orderLineID', 'itemID', 'orderID',) VALUES ('42', '9', '3');
+INSERT INTO 'orderlines' ('orderLineID', 'itemID', 'orderID',) VALUES ('13', '6', '8');
+INSERT INTO 'orderlines' ('orderLineID', 'itemID', 'orderID',) VALUES ('50', '7', '49');
+INSERT INTO 'orderlines' ('orderLineID', 'itemID', 'orderID',) VALUES ('81', '7', '37');
+INSERT INTO 'orderlines' ('orderLineID', 'itemID', 'orderID',) VALUES ('33', '8', '64');
+INSERT INTO 'orderlines' ('orderLineID', 'itemID', 'orderID',) VALUES ('41', '2', '63');
 
 
 -- Bookings for the resturaunt
