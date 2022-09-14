@@ -21,7 +21,7 @@ $result = mysqli_query($DBC, $query);
 $rowcount = mysqli_num_rows($result);
 ?>
 <h1>Orders list</h1>
-<h2><a href='additem.php'>[Add a food item]</a><a href="index.php">[Return to main page]</a></h2>
+<a href="index.php">[Return to main page]</a></h2>
 <table border="1">
     <thead>
         <tr>
