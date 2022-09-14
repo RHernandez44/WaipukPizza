@@ -1,8 +1,8 @@
 <?php
 include "header.php";
-include "checksession.php";
 include "menu.php";
-loginStatus(); //show the current login status
+include "checksession.php";
+checkUser();
 
 include "config.php"; //load in any variables
 $DBC = mysqli_connect("127.0.0.1", DBUSER, DBPASSWORD, DBDATABASE);
@@ -20,8 +20,15 @@ $query = 'SELECT orderID,orderDate,orderTime,customerID FROM orders ORDER BY ord
 $result = mysqli_query($DBC, $query);
 $rowcount = mysqli_num_rows($result);
 ?>
-<h1>Orders list</h1>
-<a href="index.php">[Return to main page]</a></h2>
+
+<div id="body">
+    <div class="header">
+        <div>
+            <h1>Orders List</h1>
+        </div>
+    </div>
+</div>
+
 <table border="1">
     <thead>
         <tr>
