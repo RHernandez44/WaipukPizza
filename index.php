@@ -7,6 +7,7 @@ include "menu.php";
 ?>
 <div id="body" class="home">
 	<div class="header">
+		<h1>-----------------------------------------------------------------THIS IS AS2-----------------------------------------------------------------</h1>
 		<img src="images/bg-home.jpg" alt="">
 		<div>
 			<a href="product.html">Seafood Delight</a>
@@ -15,7 +16,7 @@ include "menu.php";
 	<div class="body">
 		<div>
 			<div>
-				<h1>NEW PRODUCT</h1>
+				<h1>-------------THIS IS AS2-------------</h1>
 				<h2>The Tasty Calzone Pizza</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget lacinia sem. Quisque a libero semper, efficitur ante quis, molestie erat. Phasellus ut turpis libero. Nulla ex est, tristique et nunc id, interdum dignissim nunc. Proin eget ipsum ipsum. Nunc a lectus et neque scelerisque consectetur. Nulla facilisi. </p>
 			</div>
